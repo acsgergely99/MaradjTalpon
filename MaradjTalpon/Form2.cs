@@ -27,7 +27,9 @@ namespace MaradjTalpon
             fojatekosListazasa();
         }
         private void Form2_Load(object sender, EventArgs e)
-        { }
+        {
+
+        }
 
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
@@ -41,14 +43,8 @@ namespace MaradjTalpon
         }
         private void KezdesVisszaButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form is MaradjTalponAlkalmazas)
-                {
-                    form.Show();
-                }
-            }
+            this.Hide();
+            Program.belepoForm.Show();
         }        
         public void fojatekosListazasa()
         {
@@ -68,6 +64,7 @@ namespace MaradjTalpon
 
         private void JatekKezdesGomb_Click(object sender, EventArgs e)
         {
+
             if ((!JatekosLakhelyTextBox.Text.Equals("")) && (!JatekosNevTextBox.Text.Equals("")))
             {
                 var cmd = conn.CreateCommand();
@@ -89,9 +86,11 @@ namespace MaradjTalpon
                         MessageBox.Show("Ez a játékosnév már rögzítve lett!");
                     }
                 }
-                Form3 form3 = new Form3(JatekosNevTextBox.Text, JatekosLakhelyTextBox.Text);
-                this.Close();
-                form3.Show();           
+                Program.fo_jatekos_nev = JatekosNevTextBox.Text;
+                Program.fo_jatekos_lakhely = JatekosLakhelyTextBox.Text;
+                Program.foablak = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
+                this.Hide();
+                Program.foablak.Show();           
             }
             else
             {

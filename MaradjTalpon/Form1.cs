@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Media;
 
 namespace MaradjTalpon
 {
@@ -23,6 +24,11 @@ namespace MaradjTalpon
 
             conn.Open();
         }
+        private void MaradjTalponAlkalmazas_Load(object sender, EventArgs e)
+        {
+            //SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+            //simpleSound.Play();
+        }
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -35,14 +41,18 @@ namespace MaradjTalpon
         }
         private void JatekKezdesGomb_Click(object sender, EventArgs e)
         {
-            Form2 settingsForm = new Form2();
-            settingsForm.Show();
-            this.Hide();           
+            this.Visible = false;
+            Program.Form2.Show();                     
         }
         private void KilepesButton_Click(object sender, EventArgs e)
         {
             Close();
         }
-        
+
+        private void MaradjTalponAlkalmazas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }
+

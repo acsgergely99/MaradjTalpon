@@ -31,15 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MaradjTalponAlkalmazas));
             this.JatekKezdesGomb = new System.Windows.Forms.Button();
             this.KilepesButton = new System.Windows.Forms.Button();
+            this.BetoltesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // JatekKezdesGomb
             // 
             this.JatekKezdesGomb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.JatekKezdesGomb.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JatekKezdesGomb.Location = new System.Drawing.Point(200, 424);
+            this.JatekKezdesGomb.Location = new System.Drawing.Point(200, 419);
             this.JatekKezdesGomb.Name = "JatekKezdesGomb";
-            this.JatekKezdesGomb.Size = new System.Drawing.Size(242, 120);
+            this.JatekKezdesGomb.Size = new System.Drawing.Size(242, 129);
             this.JatekKezdesGomb.TabIndex = 0;
             this.JatekKezdesGomb.Text = "A Játék Indítása";
             this.JatekKezdesGomb.UseVisualStyleBackColor = false;
@@ -57,6 +58,17 @@
             this.KilepesButton.UseVisualStyleBackColor = false;
             this.KilepesButton.Click += new System.EventHandler(this.KilepesButton_Click);
             // 
+            // BetoltesButton
+            // 
+            this.BetoltesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BetoltesButton.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BetoltesButton.Location = new System.Drawing.Point(12, 721);
+            this.BetoltesButton.Name = "BetoltesButton";
+            this.BetoltesButton.Size = new System.Drawing.Size(228, 76);
+            this.BetoltesButton.TabIndex = 2;
+            this.BetoltesButton.Text = "Legutóbbi játék betöltése";
+            this.BetoltesButton.UseVisualStyleBackColor = false;
+            // 
             // MaradjTalponAlkalmazas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -64,10 +76,15 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(814, 811);
+            this.Controls.Add(this.BetoltesButton);
             this.Controls.Add(this.KilepesButton);
             this.Controls.Add(this.JatekKezdesGomb);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MaradjTalponAlkalmazas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MaradjTalponAlkalmazas_FormClosed);
+            this.Load += new System.EventHandler(this.MaradjTalponAlkalmazas_Load);
             this.ResumeLayout(false);
 
         }
@@ -76,6 +93,7 @@
 
         private System.Windows.Forms.Button JatekKezdesGomb;
         private System.Windows.Forms.Button KilepesButton;
+        private System.Windows.Forms.Button BetoltesButton;
     }
 }
 

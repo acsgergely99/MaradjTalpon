@@ -34,16 +34,17 @@
             this.ValaszlehetosegGomb2 = new System.Windows.Forms.Button();
             this.ValaszlehetosegGomb3 = new System.Windows.Forms.Button();
             this.ValaszlehetosegGomb4 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Ido = new System.Windows.Forms.Label();
-            this.KerdesekTextBox = new System.Windows.Forms.TextBox();
             this.PasszButton = new System.Windows.Forms.Button();
-            this.IdeiglenesKilepesButton = new System.Windows.Forms.Button();
+            this.ParbajPasszTextBox = new System.Windows.Forms.TextBox();
+            this.t = new System.Windows.Forms.Timer(this.components);
+            this.KilepesButton = new System.Windows.Forms.Button();
+            this.KerdesekLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ValaszlehetosegGomb1
             // 
-            this.ValaszlehetosegGomb1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ValaszlehetosegGomb1.BackColor = System.Drawing.Color.Blue;
             this.ValaszlehetosegGomb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ValaszlehetosegGomb1.ForeColor = System.Drawing.Color.White;
             this.ValaszlehetosegGomb1.Location = new System.Drawing.Point(12, 390);
@@ -56,7 +57,7 @@
             // 
             // ValaszlehetosegGomb2
             // 
-            this.ValaszlehetosegGomb2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ValaszlehetosegGomb2.BackColor = System.Drawing.Color.Blue;
             this.ValaszlehetosegGomb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ValaszlehetosegGomb2.ForeColor = System.Drawing.Color.White;
             this.ValaszlehetosegGomb2.Location = new System.Drawing.Point(447, 390);
@@ -69,7 +70,7 @@
             // 
             // ValaszlehetosegGomb3
             // 
-            this.ValaszlehetosegGomb3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ValaszlehetosegGomb3.BackColor = System.Drawing.Color.Blue;
             this.ValaszlehetosegGomb3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ValaszlehetosegGomb3.ForeColor = System.Drawing.Color.White;
             this.ValaszlehetosegGomb3.Location = new System.Drawing.Point(12, 474);
@@ -78,10 +79,11 @@
             this.ValaszlehetosegGomb3.TabIndex = 2;
             this.ValaszlehetosegGomb3.Text = "Valasz3";
             this.ValaszlehetosegGomb3.UseVisualStyleBackColor = false;
+            this.ValaszlehetosegGomb3.Click += new System.EventHandler(this.ValaszlehetosegGomb3_Click);
             // 
             // ValaszlehetosegGomb4
             // 
-            this.ValaszlehetosegGomb4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ValaszlehetosegGomb4.BackColor = System.Drawing.Color.Blue;
             this.ValaszlehetosegGomb4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ValaszlehetosegGomb4.ForeColor = System.Drawing.Color.White;
             this.ValaszlehetosegGomb4.Location = new System.Drawing.Point(447, 474);
@@ -90,71 +92,94 @@
             this.ValaszlehetosegGomb4.TabIndex = 3;
             this.ValaszlehetosegGomb4.Text = "Valasz4";
             this.ValaszlehetosegGomb4.UseVisualStyleBackColor = false;
-            // 
-            // timer1
-            // 
-            //this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.ValaszlehetosegGomb4.Click += new System.EventHandler(this.ValaszlehetosegGomb4_Click);
             // 
             // Ido
             // 
-            this.Ido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.Ido.BackColor = System.Drawing.Color.Blue;
             this.Ido.Font = new System.Drawing.Font("Bauhaus 93", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ido.ForeColor = System.Drawing.Color.White;
-            this.Ido.Location = new System.Drawing.Point(353, 225);
+            this.Ido.Location = new System.Drawing.Point(360, 265);
             this.Ido.Name = "Ido";
             this.Ido.Size = new System.Drawing.Size(156, 55);
             this.Ido.TabIndex = 4;
             this.Ido.Text = "20:00";
             this.Ido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // KerdesekTextBox
-            // 
-            this.KerdesekTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.KerdesekTextBox.Location = new System.Drawing.Point(12, 29);
-            this.KerdesekTextBox.Multiline = true;
-            this.KerdesekTextBox.Name = "KerdesekTextBox";
-            this.KerdesekTextBox.Size = new System.Drawing.Size(832, 183);
-            this.KerdesekTextBox.TabIndex = 5;
-            // 
             // PasszButton
             // 
-            this.PasszButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.PasszButton.BackColor = System.Drawing.Color.Blue;
             this.PasszButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PasszButton.ForeColor = System.Drawing.Color.White;
-            this.PasszButton.Location = new System.Drawing.Point(688, 225);
+            this.PasszButton.Location = new System.Drawing.Point(688, 180);
             this.PasszButton.Name = "PasszButton";
             this.PasszButton.Size = new System.Drawing.Size(156, 55);
             this.PasszButton.TabIndex = 6;
-            this.PasszButton.Text = "Passz";
+            this.PasszButton.Text = "Passz:";
             this.PasszButton.UseVisualStyleBackColor = false;
+            this.PasszButton.Click += new System.EventHandler(this.PasszButton_Click);
             // 
-            // IdeiglenesKilepesButton
+            // ParbajPasszTextBox
             // 
-            this.IdeiglenesKilepesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.IdeiglenesKilepesButton.Location = new System.Drawing.Point(12, 225);
-            this.IdeiglenesKilepesButton.Name = "IdeiglenesKilepesButton";
-            this.IdeiglenesKilepesButton.Size = new System.Drawing.Size(198, 143);
-            this.IdeiglenesKilepesButton.TabIndex = 7;
-            this.IdeiglenesKilepesButton.Text = "Ideiglenes Kilépés";
-            this.IdeiglenesKilepesButton.UseVisualStyleBackColor = true;
-            this.IdeiglenesKilepesButton.Click += new System.EventHandler(this.IdeiglenesKilepesButton_Click);
+            this.ParbajPasszTextBox.Enabled = false;
+            this.ParbajPasszTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ParbajPasszTextBox.Location = new System.Drawing.Point(688, 241);
+            this.ParbajPasszTextBox.Multiline = true;
+            this.ParbajPasszTextBox.Name = "ParbajPasszTextBox";
+            this.ParbajPasszTextBox.Size = new System.Drawing.Size(156, 32);
+            this.ParbajPasszTextBox.TabIndex = 12;
+            this.ParbajPasszTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // t
+            // 
+            this.t.Tick += new System.EventHandler(this.t_Tick);
+            // 
+            // KilepesButton
+            // 
+            this.KilepesButton.BackColor = System.Drawing.Color.Red;
+            this.KilepesButton.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KilepesButton.Location = new System.Drawing.Point(12, 233);
+            this.KilepesButton.Name = "KilepesButton";
+            this.KilepesButton.Size = new System.Drawing.Size(214, 109);
+            this.KilepesButton.TabIndex = 20;
+            this.KilepesButton.Text = "Kilépés";
+            this.KilepesButton.UseVisualStyleBackColor = false;
+            this.KilepesButton.Click += new System.EventHandler(this.KilepesButton_Click);
+            // 
+            // KerdesekLabel
+            // 
+            this.KerdesekLabel.BackColor = System.Drawing.Color.Transparent;
+            this.KerdesekLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KerdesekLabel.ForeColor = System.Drawing.Color.White;
+            this.KerdesekLabel.Location = new System.Drawing.Point(12, 9);
+            this.KerdesekLabel.Name = "KerdesekLabel";
+            this.KerdesekLabel.Size = new System.Drawing.Size(835, 159);
+            this.KerdesekLabel.TabIndex = 21;
+            this.KerdesekLabel.Text = "Kérdés";
+            this.KerdesekLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(856, 572);
-            this.Controls.Add(this.IdeiglenesKilepesButton);
+            this.Controls.Add(this.KerdesekLabel);
+            this.Controls.Add(this.KilepesButton);
+            this.Controls.Add(this.ParbajPasszTextBox);
             this.Controls.Add(this.PasszButton);
-            this.Controls.Add(this.KerdesekTextBox);
             this.Controls.Add(this.Ido);
             this.Controls.Add(this.ValaszlehetosegGomb4);
             this.Controls.Add(this.ValaszlehetosegGomb3);
             this.Controls.Add(this.ValaszlehetosegGomb2);
             this.Controls.Add(this.ValaszlehetosegGomb1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form4";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Párbaj";
             this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -167,10 +192,11 @@
         private System.Windows.Forms.Button ValaszlehetosegGomb2;
         private System.Windows.Forms.Button ValaszlehetosegGomb3;
         private System.Windows.Forms.Button ValaszlehetosegGomb4;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox KerdesekTextBox;
         private System.Windows.Forms.Button PasszButton;
         public System.Windows.Forms.Label Ido;
-        private System.Windows.Forms.Button IdeiglenesKilepesButton;
+        private System.Windows.Forms.TextBox ParbajPasszTextBox;
+        private System.Windows.Forms.Timer t;
+        private System.Windows.Forms.Button KilepesButton;
+        private System.Windows.Forms.Label KerdesekLabel;
     }
 }

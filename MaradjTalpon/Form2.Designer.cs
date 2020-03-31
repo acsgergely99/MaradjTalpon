@@ -53,10 +53,10 @@
             // JatekosnevLabel
             // 
             this.JatekosnevLabel.AutoSize = true;
-            this.JatekosnevLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.JatekosnevLabel.BackColor = System.Drawing.Color.Transparent;
             this.JatekosnevLabel.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.JatekosnevLabel.ForeColor = System.Drawing.Color.White;
-            this.JatekosnevLabel.Location = new System.Drawing.Point(12, 151);
+            this.JatekosnevLabel.Location = new System.Drawing.Point(300, 107);
             this.JatekosnevLabel.Name = "JatekosnevLabel";
             this.JatekosnevLabel.Size = new System.Drawing.Size(229, 32);
             this.JatekosnevLabel.TabIndex = 1;
@@ -87,10 +87,10 @@
             // JatekosLakhelyLabel
             // 
             this.JatekosLakhelyLabel.AutoSize = true;
-            this.JatekosLakhelyLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.JatekosLakhelyLabel.BackColor = System.Drawing.Color.Transparent;
             this.JatekosLakhelyLabel.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.JatekosLakhelyLabel.ForeColor = System.Drawing.Color.White;
-            this.JatekosLakhelyLabel.Location = new System.Drawing.Point(12, 199);
+            this.JatekosLakhelyLabel.Location = new System.Drawing.Point(282, 194);
             this.JatekosLakhelyLabel.Name = "JatekosLakhelyLabel";
             this.JatekosLakhelyLabel.Size = new System.Drawing.Size(274, 32);
             this.JatekosLakhelyLabel.TabIndex = 4;
@@ -99,7 +99,7 @@
             // JatekosLakhelyTextBox
             // 
             this.JatekosLakhelyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.JatekosLakhelyTextBox.Location = new System.Drawing.Point(305, 199);
+            this.JatekosLakhelyTextBox.Location = new System.Drawing.Point(305, 238);
             this.JatekosLakhelyTextBox.Multiline = true;
             this.JatekosLakhelyTextBox.Name = "JatekosLakhelyTextBox";
             this.JatekosLakhelyTextBox.Size = new System.Drawing.Size(213, 32);
@@ -111,6 +111,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.JatekosLakhelyTextBox);
             this.Controls.Add(this.JatekosLakhelyLabel);
@@ -118,7 +119,10 @@
             this.Controls.Add(this.JatekosNevTextBox);
             this.Controls.Add(this.JatekosnevLabel);
             this.Controls.Add(this.JatekKezdesGomb);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
