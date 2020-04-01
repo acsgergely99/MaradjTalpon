@@ -142,8 +142,7 @@ namespace MaradjTalpon
         }
         
         public void joValasz()
-        {
-            
+        {            
             string helyes = BEOLVAS.helyesValasz(hanysor);
             if (helyes.Equals(betu))
             {
@@ -164,9 +163,12 @@ namespace MaradjTalpon
                     ValaszlehetosegGomb4.BackColor = Color.Green;
                 }
                 buul = true;
+                Console.WriteLine(penzNyeremenyek);
             }
             else
-            {              
+            {
+                if (helyes == "A")
+                {
                     ValaszlehetosegGomb1.BackColor = Color.Green;
                     t.Stop();
                     DialogResult result = MessageBox.Show("Nem adtál jó választ a kérdésre ezért elvesztetted egy passz lehetőséged,jöhet a következő kérdés?", "", MessageBoxButtons.OK);
@@ -183,33 +185,76 @@ namespace MaradjTalpon
                         ValaszlehetosegGomb4.BackColor = Color.Blue;
                         ValaszlehetosegGomb4.Enabled = true;
                         hanysor = random.Next(0, 5000);
-                        szoveg();                      
-                        if (ParbajPasszTextBox.Text == "2")
-                        {
-                            ParbajPasszTextBox.Text = "1";
-                            if (buul)
-                            {
-                                ParbajPasszTextBox.Text = "2";
-                            }
-                        }
-                        else if (ParbajPasszTextBox.Text == "1")
-                        {
-                            ParbajPasszTextBox.Text = "0";
-                            if (buul)
-                            {
-                                ParbajPasszTextBox.Text = "1";
-                            }
-                        }
-                        else if (ParbajPasszTextBox.Text == "0")
-                        {
-                            MessageBox.Show("GAME OVER");
-                            if (buul)
-                            {
-                                ParbajPasszTextBox.Text = "0";
-                            }
-                        }
+                        szoveg();
+                        valt();
                     }
-               
+                }
+                else if (helyes == "B")
+                {
+                    ValaszlehetosegGomb2.BackColor = Color.Green;
+                    t.Stop();
+                    DialogResult result = MessageBox.Show("Nem adtál jó választ a kérdésre ezért elvesztetted egy passz lehetőséged,jöhet a következő kérdés?", "", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK)
+                    {
+                        quick = 1200;
+                        t.Start();
+                        ValaszlehetosegGomb1.BackColor = Color.Blue;
+                        ValaszlehetosegGomb2.Enabled = true;
+                        ValaszlehetosegGomb2.BackColor = Color.Blue;
+                        ValaszlehetosegGomb1.Enabled = true;
+                        ValaszlehetosegGomb3.BackColor = Color.Blue;
+                        ValaszlehetosegGomb3.Enabled = true;
+                        ValaszlehetosegGomb4.BackColor = Color.Blue;
+                        ValaszlehetosegGomb4.Enabled = true;
+                        hanysor = random.Next(0, 5000);
+                        szoveg();
+                        valt();
+                    }
+                }
+                else if (helyes == "C")
+                {
+                    ValaszlehetosegGomb3.BackColor = Color.Green;
+                    t.Stop();
+                    DialogResult result = MessageBox.Show("Nem adtál jó választ a kérdésre ezért elvesztetted egy passz lehetőséged,jöhet a következő kérdés?", "", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK)
+                    {
+                        quick = 1200;
+                        t.Start();
+                        ValaszlehetosegGomb1.BackColor = Color.Blue;
+                        ValaszlehetosegGomb2.Enabled = true;
+                        ValaszlehetosegGomb2.BackColor = Color.Blue;
+                        ValaszlehetosegGomb1.Enabled = true;
+                        ValaszlehetosegGomb3.BackColor = Color.Blue;
+                        ValaszlehetosegGomb3.Enabled = true;
+                        ValaszlehetosegGomb4.BackColor = Color.Blue;
+                        ValaszlehetosegGomb4.Enabled = true;
+                        hanysor = random.Next(0, 5000);
+                        szoveg();
+                        valt();
+                    }
+                }
+                else if (helyes == "D")
+                {
+                    ValaszlehetosegGomb3.BackColor = Color.Green;
+                    t.Stop();
+                    DialogResult result = MessageBox.Show("Nem adtál jó választ a kérdésre ezért elvesztetted egy passz lehetőséged,jöhet a következő kérdés?", "", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK)
+                    {
+                        quick = 1200;
+                        t.Start();
+                        ValaszlehetosegGomb1.BackColor = Color.Blue;
+                        ValaszlehetosegGomb2.Enabled = true;
+                        ValaszlehetosegGomb2.BackColor = Color.Blue;
+                        ValaszlehetosegGomb1.Enabled = true;
+                        ValaszlehetosegGomb3.BackColor = Color.Blue;
+                        ValaszlehetosegGomb3.Enabled = true;
+                        ValaszlehetosegGomb4.BackColor = Color.Blue;
+                        ValaszlehetosegGomb4.Enabled = true;
+                        hanysor = random.Next(0, 5000);
+                        szoveg();
+                        valt();
+                    }
+                }
             }    
         }
         private void ValaszlehetosegGomb1_Click(object sender, EventArgs e)
@@ -294,17 +339,23 @@ namespace MaradjTalpon
             quick2 = 130;
 
         }
-        //public void nyeremenyek()
-        //{
-        //    int valami;
-        //    string szazFT = "100", szazFT2 = "100";
-        //    string szazhuszonotezerFT = "125 000", szazhuszonotezerFT2 = "125 000";
-        //    string ketszazotvenezerFT ="250 000", ketszazotvenezerFT2 = "250 000";
-        //    string otszazezerFT = "500 000", otszazezerFT2 = "500 000";
-        //    string egymillioFT = "1 000 000", egymillioFT2 = "1 000 000";            
-        //    penzNyeremenyek.Add(szazFT + szazFT2 + szazhuszonotezerFT + szazhuszonotezerFT2 + ketszazotvenezerFT + ketszazotvenezerFT2 + otszazezerFT + otszazezerFT2 + egymillioFT + egymillioFT2);
-        //    //penzNyeremenyek = random2.Next(0,10);
-        //}
+        public void nyeremenyek()
+        {
+            //int szamok;
+            //int szazFT = 100, szazFT2 = 100;
+            //int szazhuszonotezerFT = 125000, szazhuszonotezerFT2 = 125000;
+            //int ketszazotvenezerFT = 250000, ketszazotvenezerFT2 = 250000;
+            //int otszazezerFT = 500000, otszazezerFT2 = 500000;
+            //int egymillioFT = 1000000, egymillioFT2 = 1000000;
+            //penzNyeremenyek.Add(szazFT + szazFT2 + szazhuszonotezerFT + szazhuszonotezerFT2 + ketszazotvenezerFT + ketszazotvenezerFT2 + otszazezerFT + otszazezerFT2 + egymillioFT + egymillioFT2);
+            //penzNyeremenyek = random2.Next(100,1000000);
+            string szazFT = "100", szazFT2 = "100";
+            string szazhuszonotezerFT = "125 000", szazhuszonotezerFT2 = "125 000";
+            string ketszazotvenezerFT = "250 000", ketszazotvenezerFT2 = "250 000";
+            string otszazezerFT = "500 000", otszazezerFT2 = "500 000";
+            string egymillioFT = "1 000 000", egymillioFT2 = "1 000 000";
+            penzNyeremenyek.Add(szazFT + szazFT2 + szazhuszonotezerFT + szazhuszonotezerFT2 + ketszazotvenezerFT + ketszazotvenezerFT2 + otszazezerFT + otszazezerFT2 + egymillioFT + egymillioFT2);
+        }
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -350,126 +401,32 @@ namespace MaradjTalpon
                 }
             }
         }
-        //public void rosszValasz()
-        //{
-        //else if (helyes != "A")
-        //{
-        //    ValaszlehetosegGomb1.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb2.Enabled = true;
-        //    ValaszlehetosegGomb2.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb1.Enabled = true;
-        //    ValaszlehetosegGomb3.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb3.Enabled = true;
-        //    ValaszlehetosegGomb4.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb4.Enabled = true;
-        //    hanysor = random.Next(0, 5000);
-        //    szoveg();
-        //    quick = 1200;
-        //}
-        //else if (helyes != "B")
-        //{
-        //    ValaszlehetosegGomb1.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb2.Enabled = true;
-        //    ValaszlehetosegGomb2.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb1.Enabled = true;
-        //    ValaszlehetosegGomb3.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb3.Enabled = true;
-        //    ValaszlehetosegGomb4.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb4.Enabled = true;
-        //    hanysor = random.Next(0, 5000);
-        //    szoveg();
-        //    quick = 1200;
-
-        //}
-        //else if (helyes != "C")
-        //{
-        //    ValaszlehetosegGomb1.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb2.Enabled = true;
-        //    ValaszlehetosegGomb2.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb1.Enabled = true;
-        //    ValaszlehetosegGomb3.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb3.Enabled = true;
-        //    ValaszlehetosegGomb4.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb4.Enabled = true;
-        //    hanysor = random.Next(0, 5000);
-        //    szoveg();
-        //    quick = 1200;
-        //}
-        //else if (helyes != "D")
-        //{
-        //    ValaszlehetosegGomb1.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb2.Enabled = true;
-        //    ValaszlehetosegGomb2.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb1.Enabled = true;
-        //    ValaszlehetosegGomb3.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb3.Enabled = true;
-        //    ValaszlehetosegGomb4.BackColor = Color.Blue;
-        //    ValaszlehetosegGomb4.Enabled = true;
-        //    hanysor = random.Next(0, 5000);
-        //    szoveg();
-        //    quick = 1200;
-        //}
-        //}
-
-        //public void helytelenValasz()
-        //{
-        //else if (betu != "A")
-        //{
-        //    hanysor = random.Next(0, 5000);
-        //    szoveg();
-        //    quick = 1200;
-        //}
-        //else if (betu != "B")
-        //{
-        //    hanysor = random.Next(0, 5000);
-        //    szoveg();
-        //    quick = 1200;
-        //}
-        //else if (betu != "C")
-        //{
-        //    hanysor = random.Next(0, 5000);
-        //    szoveg();
-        //    quick = 1200;
-        //}
-        //else if (betu != "D")
-        //{
-        //    hanysor = random.Next(0, 5000);
-        //    szoveg();
-        //    quick = 1200;
-        //}
-        //}
-        //public void correct()
-        //{
-        //    quick3 = 200;
-        //    string helyes = BEOLVAS.helyesValasz(hanysor);
-        //    if (helyes.Equals(betu))
-        //    {               
-        //        if (betu == "A")
-        //        {
-        //            ValaszlehetosegGomb1.BackColor = Color.Green;
-        //        }
-        //        else if (betu == "B")
-        //        {
-        //            ValaszlehetosegGomb2.BackColor = Color.Green;
-        //        }
-        //        else if (betu == "C")
-        //        {
-        //            ValaszlehetosegGomb3.BackColor = Color.Green;
-        //        }
-        //        else if (betu == "D")
-        //        {
-        //            ValaszlehetosegGomb4.BackColor = Color.Green;
-        //        }
-
-        //    }
-        //    this.Close();
-        //    foreach (Form form in Application.OpenForms)
-        //    {
-        //        if (form is Form3)
-        //        {
-        //            form.Show();
-        //        }
-        //    }
-        //}
+        public void valt()
+        {
+            if (ParbajPasszTextBox.Text == "2")
+            {
+                ParbajPasszTextBox.Text = "1";
+                if (buul)
+                {
+                    ParbajPasszTextBox.Text = "2";
+                }
+            }
+            else if (ParbajPasszTextBox.Text == "1")
+            {
+                ParbajPasszTextBox.Text = "0";
+                if (buul)
+                {
+                    ParbajPasszTextBox.Text = "1";
+                }
+            }
+            else if (ParbajPasszTextBox.Text == "0")
+            {
+                MessageBox.Show("GAME OVER");
+                if (buul)
+                {
+                    ParbajPasszTextBox.Text = "0";
+                }
+            }
+        }
     }
 }
