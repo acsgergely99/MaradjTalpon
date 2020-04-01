@@ -23,7 +23,6 @@ namespace MaradjTalpon
            Kerd= Beolvas();
         }
 
-
         public List<Kerdesek> Beolvas()
         {
             List<Kerdesek> txt = new List<Kerdesek>();
@@ -51,11 +50,6 @@ namespace MaradjTalpon
             }
             return txt;
         }
-      /*  public int SorHozzaad(int veletlen)
-        {
-            
-            return rand.Next(0,4999);
-        }*/
         public string getKerdes(int sor)
         {
             string kerdes = "";
