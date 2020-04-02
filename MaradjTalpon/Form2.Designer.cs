@@ -70,6 +70,7 @@
             this.JatekosNevTextBox.Name = "JatekosNevTextBox";
             this.JatekosNevTextBox.Size = new System.Drawing.Size(213, 32);
             this.JatekosNevTextBox.TabIndex = 2;
+            this.JatekosNevTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // KezdesVisszaButton
             // 
@@ -104,6 +105,7 @@
             this.JatekosLakhelyTextBox.Name = "JatekosLakhelyTextBox";
             this.JatekosLakhelyTextBox.Size = new System.Drawing.Size(213, 32);
             this.JatekosLakhelyTextBox.TabIndex = 5;
+            this.JatekosLakhelyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form2
             // 

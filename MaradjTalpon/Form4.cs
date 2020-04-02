@@ -16,11 +16,7 @@ namespace MaradjTalpon
 {
     public partial class Form4 : Form
     {
-        //public bool buul = false;
-        //System.Timers.Timer TimeR = new System.Timers.Timer();
-        //System.Timers.Timer TimeR2 = new System.Timers.Timer();
-        //public int countDown = 0;
-        //public int countDown2 = 0;
+
         Timer timer = new Timer();
         public int quick = 1200;
         public int quick2 = 300;
@@ -43,34 +39,11 @@ namespace MaradjTalpon
 
             InitializeComponent();
            
-            //TimeR.Elapsed += new ElapsedEventHandler(OnTimeEvent);
-            //TimeR.Interval = 1000;
-            //TimeR2.Elapsed += new ElapsedEventHandler(OnTimeEvent2);
-            //TimeR2.Interval = 1000;
             hanysor = random.Next(0, 5000);
             szoveg();
             ParbajPasszTextBox.Text = PasszolasiLehetoseg;
         }
 
-        //private void OnTimeEvent(object sender, ElapsedEventArgs e)
-        //{
-        //    countDown++;
-        //    if (countDown % 3 == 0)
-        //    {
-        //        TimeR.Stop();
-        //        //joValasz();
-        //    }
-        //}
-
-        //private void OnTimeEvent2(object sender, ElapsedEventArgs e)
-        //{
-        //    countDown2++;
-        //    if (countDown2 % 3 == 0)
-        //    {
-        //        TimeR2.Stop();
-        //        szoveg();
-        //    }
-        //}
         private void Form4_Load(object sender, EventArgs e)
         {
             t = new System.Windows.Forms.Timer();
@@ -90,10 +63,10 @@ namespace MaradjTalpon
                 {
                     ParbajPasszTextBox.Text = "1";
                     Form3.passzLehetosegek = "1";
-                    //hanysor = random.Next(0, 5000);
-                    //szoveg();
-                    //quick = 1200;
-                    //t.Start();
+                    hanysor = random.Next(0, 5000);
+                    szoveg();
+                    quick = 1200;
+                    t.Start();
                     if (buul)
                     {
                         ParbajPasszTextBox.Text = "2";
@@ -104,10 +77,10 @@ namespace MaradjTalpon
                 {
                     ParbajPasszTextBox.Text = "0";
                     Form3.passzLehetosegek = "0";
-                    //hanysor = random.Next(0, 5000);
-                    //szoveg();
-                    //quick = 1200;
-                    //t.Start();
+                    hanysor = random.Next(0, 5000);
+                    szoveg();
+                    quick = 1200;
+                    t.Start();
                     if (buul)
                     {
                         ParbajPasszTextBox.Text = "1";
@@ -123,7 +96,7 @@ namespace MaradjTalpon
                     }
                     else
                     {
-                        MessageBox.Show("GAME OVER");
+                        ujJatek();
                     }
                 }
             }
@@ -163,6 +136,7 @@ namespace MaradjTalpon
             string helyes = BEOLVAS.helyesValasz(hanysor);
             if (helyes.Equals(betu))
             {
+                buul = true;
                 if (betu == "A")
                 {
                     ValaszlehetosegGomb1.BackColor = Color.Green;
@@ -179,23 +153,14 @@ namespace MaradjTalpon
                 {
                     ValaszlehetosegGomb4.BackColor = Color.Green;
                 }
-                buul = true;
-                
+                t.Stop();                
                 DialogResult result = MessageBox.Show("Gratulálok jól tippeltél a nyereményed " + Form3.penznyeremeny, "" ,MessageBoxButtons.OK);
-                Form3.eddigMegnyert.Add(Form3.penznyeremeny);
-                
+                Form3.eddigMegnyert.Add(Form3.penznyeremeny);               
                 if (result == DialogResult.OK)
                 {
-                    this.Close();
-                    foreach (Form form in Application.OpenForms)
-                    {
-                       
-                        if (form is Form3)
-                        {
-                            
-                            form.Show();
-                        }
-                    }
+                    this.Hide();
+                    Program.foablak = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
+                    Program.foablak.Show();
                 }
             }
             else
@@ -348,6 +313,34 @@ namespace MaradjTalpon
                 }
             }
         }
+        public void HelytelenValasz()
+        {
+            t.Stop();
+            if (ParbajPasszTextBox.Text != "0")
+            {
+                DialogResult result = MessageBox.Show("Nem adtál jó választ a kérdésre ezért elvesztetted egy passz lehetőséged,jöhet a következő kérdés?", "", MessageBoxButtons.OK);
+                if (result == DialogResult.OK)
+                {
+                    quick = 1200;
+                    t.Start();
+                    ValaszlehetosegGomb1.BackColor = Color.Blue;
+                    ValaszlehetosegGomb2.Enabled = true;
+                    ValaszlehetosegGomb2.BackColor = Color.Blue;
+                    ValaszlehetosegGomb1.Enabled = true;
+                    ValaszlehetosegGomb3.BackColor = Color.Blue;
+                    ValaszlehetosegGomb3.Enabled = true;
+                    ValaszlehetosegGomb4.BackColor = Color.Blue;
+                    ValaszlehetosegGomb4.Enabled = true;
+                    hanysor = random.Next(0, 5000);
+                    szoveg();
+                    valt();
+                }
+            }
+            else if (ParbajPasszTextBox.Text == "0")
+            {
+                ujJatek();
+            }
+        }
         public void valt()
         {
             if (ParbajPasszTextBox.Text == "2")
@@ -360,36 +353,28 @@ namespace MaradjTalpon
             {
                 ParbajPasszTextBox.Text = "0";
                 Form3.passzLehetosegek = "0";
-
-
             }
-            else if (ParbajPasszTextBox.Text == "0")
-            {
-                MessageBox.Show("GAME OVER");
-
-            }
+           
         }
-
-
-        public void HelytelenValasz()
+        public void ujJatek()
         {
+            quick = 0;
             t.Stop();
-            DialogResult result = MessageBox.Show("Nem adtál jó választ a kérdésre ezért elvesztetted egy passz lehetőséged,jöhet a következő kérdés?", "", MessageBoxButtons.OK);
-            if (result == DialogResult.OK)
+            DialogResult result = MessageBox.Show("Passzlehetőség nélkül lejárt az időd vagy rosszul válaszoltál a kérdésre, ezért vesztettél.", "Szeretnél új játékot kezdeni?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                quick = 1200;
-                t.Start();
-                ValaszlehetosegGomb1.BackColor = Color.Blue;
-                ValaszlehetosegGomb2.Enabled = true;
-                ValaszlehetosegGomb2.BackColor = Color.Blue;
-                ValaszlehetosegGomb1.Enabled = true;
-                ValaszlehetosegGomb3.BackColor = Color.Blue;
-                ValaszlehetosegGomb3.Enabled = true;
-                ValaszlehetosegGomb4.BackColor = Color.Blue;
-                ValaszlehetosegGomb4.Enabled = true;
-                hanysor = random.Next(0, 5000);
-                szoveg();
-                valt();
+                Program.foablak.Close();
+                this.Close();
+                Form3.passzLehetosegek = "2";
+                Form3.penznyeremeny = 0;
+                Program.foablak = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
+                Program.foablak.Show();
+                
+            }
+            else 
+            {
+                Program.belepoForm.Close();
+                Close();
             }
         }
         //public void Osszegek()

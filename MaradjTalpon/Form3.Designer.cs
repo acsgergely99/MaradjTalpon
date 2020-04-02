@@ -249,6 +249,7 @@
             this.FoJatekosTextBox.Name = "FoJatekosTextBox";
             this.FoJatekosTextBox.Size = new System.Drawing.Size(201, 33);
             this.FoJatekosTextBox.TabIndex = 12;
+            this.FoJatekosTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // JatekosLakhelyTextBox
             // 
@@ -259,6 +260,7 @@
             this.JatekosLakhelyTextBox.Name = "JatekosLakhelyTextBox";
             this.JatekosLakhelyTextBox.Size = new System.Drawing.Size(201, 32);
             this.JatekosLakhelyTextBox.TabIndex = 13;
+            this.JatekosLakhelyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // NevLabel
             // 
@@ -638,6 +640,7 @@
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FőAblak";
+            this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FoJatekosPictureBox)).EndInit();
             this.KategoriaGroupBox.ResumeLayout(false);
             this.KategoriaGroupBox.PerformLayout();

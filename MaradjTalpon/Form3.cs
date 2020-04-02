@@ -18,21 +18,23 @@ namespace MaradjTalpon
     {
         MySqlConnection conn;
         //static List<Kerdesek> txtKerdesek;
-        public static string passzLehetosegek="2";
+        public static string passzLehetosegek = "2";
         public static List<int> eddigMegnyert = new List<int>();
         public static List<int> penznyeremenyek = new List<int>();
-        public static int penznyeremeny=0;
+        public static int penznyeremeny = 0;
         private int nyeremenyindex;
         KerdesBeolvasas beOlvasClass = new KerdesBeolvasas();
         private static List<Kerdesek> kerdesekClass = new List<Kerdesek>();
+        public static bool indexertek = false;
+        public static string ert = "";
 
         Random random = new Random();
         public Form3(string uj_jatekos,string uj_lakhely)
         {            
             InitializeComponent();
             Osszegek();
-             //osszKerdesek = Beolvas();
-             conn = new MySqlConnection("Server=localhost; Port=3306; Database=maradj_talpon; Uid=root; Pwd=;");
+            ertek();
+            conn = new MySqlConnection("Server=localhost; Port=3306; Database=maradj_talpon; Uid=root; Pwd=;");
             conn.Open();
             FoJatekosTextBox.Text = uj_jatekos;
             JatekosLakhelyTextBox.Text = uj_lakhely;
@@ -40,16 +42,6 @@ namespace MaradjTalpon
             PenznyeremenyTextBox.Text = eddigiOsszeg()+"";
             Refresh();
         }
-
-        //public void jatekos()
-        //{
-        //    string passz = "2";
-        //    string penz = "0";
-        //    passzLehetosegek = 2;
-        //    penzNyeremeny = 0;
-        //    passzLehetosegek = Convert.ToInt32(passz);
-        //    penzNyeremeny = Convert.ToInt32(penz);
-        //}
 
         public void PasszolasiLehetosegTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -99,6 +91,8 @@ namespace MaradjTalpon
         }
         private void Button_Jatekos1_Click(object sender, EventArgs e)
         {
+            ert = "1";
+            indexertek = true;
             this.Hide();
             Button_Jatekos1.BackColor = Color.Green;
             Button_Jatekos1.Enabled = false;
@@ -116,6 +110,8 @@ namespace MaradjTalpon
         }
         private void Button_Jatekos2_Click(object sender, EventArgs e)
         {
+            ert = "2";
+            indexertek = true;
             this.Hide();
             Button_Jatekos2.BackColor = Color.Green;
             Button_Jatekos2.Enabled = false;
@@ -133,6 +129,8 @@ namespace MaradjTalpon
 
         private void Button_Jatekos3_Click(object sender, EventArgs e)
         {
+            ert = "3";
+            indexertek = true;
             this.Hide();
             Button_Jatekos3.BackColor = Color.Green;
             Button_Jatekos3.Enabled = false;
@@ -150,6 +148,8 @@ namespace MaradjTalpon
 
         private void Button_Jatekos4_Click(object sender, EventArgs e)
         {
+            ert = "4";
+            indexertek = true;
             this.Hide();
             Button_Jatekos4.BackColor = Color.Green;
             Button_Jatekos4.Enabled = false;
@@ -167,6 +167,8 @@ namespace MaradjTalpon
 
         private void Button_Jatekos5_Click(object sender, EventArgs e)
         {
+            ert = "5";
+            indexertek = true;
             this.Hide();
             Button_Jatekos5.BackColor = Color.Green;
             Button_Jatekos5.Enabled = false;
@@ -184,6 +186,8 @@ namespace MaradjTalpon
 
         private void Button_Jatekos6_Click(object sender, EventArgs e)
         {
+            ert = "6";
+            indexertek = true;
             this.Hide();
             Button_Jatekos6.BackColor = Color.Green;
             Button_Jatekos6.Enabled = false;
@@ -201,6 +205,8 @@ namespace MaradjTalpon
 
         private void Button_Jatekos7_Click(object sender, EventArgs e)
         {
+            ert = "7";
+            indexertek = true;
             this.Hide();
             Button_Jatekos7.BackColor = Color.Green;
             Button_Jatekos7.Enabled = false;
@@ -218,6 +224,8 @@ namespace MaradjTalpon
 
         private void Button_Jatekos8_Click(object sender, EventArgs e)
         {
+            ert = "8";
+            indexertek = true;
             this.Hide();
             Button_Jatekos8.BackColor = Color.Green;
             Button_Jatekos8.Enabled = false;
@@ -235,6 +243,8 @@ namespace MaradjTalpon
 
         private void Button_Jatekos9_Click(object sender, EventArgs e)
         {
+            ert = "9";
+            indexertek = true;
             this.Hide();
             Button_Jatekos9.BackColor = Color.Green;
             Button_Jatekos9.Enabled = false;
@@ -252,6 +262,8 @@ namespace MaradjTalpon
 
         private void Button_Jatekos10_Click(object sender, EventArgs e)
         {
+            ert = "10";
+            indexertek = true;
             this.Hide();
             Button_Jatekos10.BackColor = Color.Green;
             Button_Jatekos10.Enabled = false;
@@ -282,7 +294,6 @@ namespace MaradjTalpon
         {
             penznyeremenyek.Add(100);
             penznyeremenyek.Add(100);
-
             penznyeremenyek.Add(125000);
             penznyeremenyek.Add(125000);
             penznyeremenyek.Add(125000);
@@ -298,6 +309,64 @@ namespace MaradjTalpon
         private int eddigiOsszeg()
         {
             return eddigMegnyert.Sum();
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+        public void ertek()
+        {
+            if (indexertek == true && ert == "1")
+            {
+                Button_Jatekos1.BackColor = Color.Green;
+                Button_Jatekos1.Enabled = false;
+            }
+            if (indexertek == true && ert == "2")
+            {
+                Button_Jatekos2.BackColor = Color.Green;
+                Button_Jatekos2.Enabled = false;
+            }
+            if (indexertek == true && ert == "3")
+            {
+                Button_Jatekos3.BackColor = Color.Green;
+                Button_Jatekos3.Enabled = false;
+            }
+            if (indexertek == true && ert == "4")
+            {
+                Button_Jatekos4.BackColor = Color.Green;
+                Button_Jatekos4.Enabled = false;
+            }
+            if (indexertek == true && ert == "5")
+            {
+                Button_Jatekos5.BackColor = Color.Green;
+                Button_Jatekos5.Enabled = false;
+            }
+            if (indexertek == true && ert == "6")
+            {
+                Button_Jatekos6.BackColor = Color.Green;
+                Button_Jatekos6.Enabled = false;
+            }
+            if (indexertek == true && ert == "7")
+            {
+                Button_Jatekos7.BackColor = Color.Green;
+                Button_Jatekos7.Enabled = false;
+            }
+            if (indexertek == true && ert == "8")
+            {
+                Button_Jatekos8.BackColor = Color.Green;
+                Button_Jatekos8.Enabled = false;
+            }
+            if (indexertek == true && ert == "9")
+            {
+                Button_Jatekos9.BackColor = Color.Green;
+                Button_Jatekos9.Enabled = false;
+            }
+            if (indexertek == true && ert == "10")
+            {
+                Button_Jatekos10.BackColor = Color.Green;
+                Button_Jatekos10.Enabled = false;
+            }
         }
     }      
 }
