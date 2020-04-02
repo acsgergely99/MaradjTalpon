@@ -18,23 +18,27 @@ namespace MaradjTalpon
     {
         MySqlConnection conn;
         //static List<Kerdesek> txtKerdesek;
-        public static string passzLehetosegek = "2";
-        public static int penzNyeremeny;
-        public List<int> penznyeremenyek = new List<int>();
+        public static string passzLehetosegek="2";
+        public static List<int> eddigMegnyert = new List<int>();
+        public static List<int> penznyeremenyek = new List<int>();
+        public static int penznyeremeny=0;
+        private int nyeremenyindex;
         KerdesBeolvasas beOlvasClass = new KerdesBeolvasas();
         private static List<Kerdesek> kerdesekClass = new List<Kerdesek>();
 
+        Random random = new Random();
         public Form3(string uj_jatekos,string uj_lakhely)
         {            
             InitializeComponent();
-            //osszKerdesek = Beolvas();
-            conn = new MySqlConnection("Server=localhost; Port=3306; Database=maradj_talpon; Uid=root; Pwd=;");
+            Osszegek();
+             //osszKerdesek = Beolvas();
+             conn = new MySqlConnection("Server=localhost; Port=3306; Database=maradj_talpon; Uid=root; Pwd=;");
             conn.Open();
             FoJatekosTextBox.Text = uj_jatekos;
             JatekosLakhelyTextBox.Text = uj_lakhely;
             PasszolasiLehetosegTextBox.Text = passzLehetosegek;
-            PenznyeremenyTextBox.Text = "0";
-            
+            PenznyeremenyTextBox.Text = eddigiOsszeg()+"";
+            Refresh();
         }
 
         //public void jatekos()
@@ -49,11 +53,11 @@ namespace MaradjTalpon
 
         public void PasszolasiLehetosegTextBox_TextChanged(object sender, EventArgs e)
         {
-            int passz =Convert.ToInt32(PasszolasiLehetosegTextBox.Text);
+            int passz = Convert.ToInt32(PasszolasiLehetosegTextBox.Text);
             if (passz > 0)
             {
                 passz--;
-                PasszolasiLehetosegTextBox.Text = passz + "";
+                PasszolasiLehetosegTextBox.Text = passzLehetosegek;
             }
             //string passz = "2";
             //MaradjTalpon.Passzolas.passzolasiLehetoseg = passz;
@@ -62,11 +66,7 @@ namespace MaradjTalpon
         }
         public void PenznyeremenyTextBox_TextChanged(object sender, EventArgs e)
         {          
-
-            string penz = "0";
-            penzNyeremeny = 0;
-            penzNyeremeny = Convert.ToInt32(penz);
-            PenznyeremenyTextBox.Text = penz;
+            PenznyeremenyTextBox.Text = eddigiOsszeg()+"";
         }
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
@@ -78,6 +78,8 @@ namespace MaradjTalpon
                 return myCp;
             }
         }
+
+        public List<int> Penznyeremenyek { get => penznyeremenyek; set => penznyeremenyek = value; }
 
         public string KategoriaChoose(string kivalasztottKategoria)
         {
@@ -102,12 +104,15 @@ namespace MaradjTalpon
             Button_Jatekos1.Enabled = false;
            // Form3.passzLehetosegek =PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
-           
+            penznyeremenyek.RemoveAt(nyeremenyindex);
+
         }
         private void Button_Jatekos2_Click(object sender, EventArgs e)
         {
@@ -116,11 +121,14 @@ namespace MaradjTalpon
             Button_Jatekos2.Enabled = false;
            // Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
         }
 
         private void Button_Jatekos3_Click(object sender, EventArgs e)
@@ -130,11 +138,14 @@ namespace MaradjTalpon
             Button_Jatekos3.Enabled = false;
            // Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
         }
 
         private void Button_Jatekos4_Click(object sender, EventArgs e)
@@ -144,11 +155,14 @@ namespace MaradjTalpon
             Button_Jatekos4.Enabled = false;
          //   Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
         }
 
         private void Button_Jatekos5_Click(object sender, EventArgs e)
@@ -158,11 +172,14 @@ namespace MaradjTalpon
             Button_Jatekos5.Enabled = false;
           //  Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
         }
 
         private void Button_Jatekos6_Click(object sender, EventArgs e)
@@ -172,11 +189,14 @@ namespace MaradjTalpon
             Button_Jatekos6.Enabled = false;
          //   Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
         }
 
         private void Button_Jatekos7_Click(object sender, EventArgs e)
@@ -186,11 +206,14 @@ namespace MaradjTalpon
             Button_Jatekos7.Enabled = false;
          //   Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
         }
 
         private void Button_Jatekos8_Click(object sender, EventArgs e)
@@ -200,11 +223,14 @@ namespace MaradjTalpon
             Button_Jatekos8.Enabled = false;
         //    Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
         }
 
         private void Button_Jatekos9_Click(object sender, EventArgs e)
@@ -214,11 +240,14 @@ namespace MaradjTalpon
             Button_Jatekos9.Enabled = false;
          //   Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
         }
 
         private void Button_Jatekos10_Click(object sender, EventArgs e)
@@ -228,11 +257,15 @@ namespace MaradjTalpon
             Button_Jatekos10.Enabled = false;
         //    Form3.passzLehetosegek = PasszolasiLehetosegTextBox.Text;
             Form4 ujform = new Form4(Form3.passzLehetosegek);
+            nyeremenyindex = random.Next(0, penznyeremenyek.Count);
+            penznyeremeny = penznyeremenyek[nyeremenyindex];
             ujform.ShowDialog();
             if (BioszRadioButton.Checked || ToriRadioButton.Checked || NyelvRadioButton.Checked || SportRadioButton.Checked || MagyarorszagRadioButton.Checked || TechnikaRadioButton.Checked || FilmRadioButton.Checked || JatekRadioButton.Checked || OrszagokRadioButton.Checked || FoldrajzRadioButton.Checked || AltalanosRadioButton.Checked || IrodalomRadioButton.Checked || ZeneRadioButton.Checked || TudomanyRadioButton.Checked || KonyhaRadioButton.Checked || KepzomuveszetRadioButton.Checked || VallasRadioButton.Checked || EpiteszetRadioButton.Checked || SzinhazRadioButton.Checked || OperaRadioButton.Checked)
             {
                 KategoriaGroupBox.Enabled = false;
             }
+            penznyeremenyek.RemoveAt(nyeremenyindex);
+
         }
 
         private void KilepesButton_Click(object sender, EventArgs e)
@@ -245,7 +278,27 @@ namespace MaradjTalpon
         {
 
         }
- 
+        public void Osszegek()
+        {
+            penznyeremenyek.Add(100);
+            penznyeremenyek.Add(100);
+
+            penznyeremenyek.Add(125000);
+            penznyeremenyek.Add(125000);
+            penznyeremenyek.Add(125000);
+            penznyeremenyek.Add(250000);
+            penznyeremenyek.Add(250000);
+            penznyeremenyek.Add(500000);
+            penznyeremenyek.Add(500000);
+            penznyeremenyek.Add(1000000);
+            penznyeremenyek.Add(1000000);
+
+        }
+
+        private int eddigiOsszeg()
+        {
+            return eddigMegnyert.Sum();
+        }
     }      
 }
 /*public List<Kerdesek> kerdesKivalaszto()

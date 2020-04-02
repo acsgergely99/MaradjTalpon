@@ -92,6 +92,7 @@
     <Compile Include="Fo_jatekos.cs" />
     <Compile Include="KerdesBeolvasas.cs" />
     <Compile Include="Kerdesek.cs" />
+    <Compile Include="Nyeremeny.cs" />
     <Compile Include="Passzolas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,8 +10,6 @@ namespace MaradjTalpon
 {
     class KerdesBeolvasas
     {
-   
-       
         public static List<Kerdesek> kerd;
         public static Random rand;
         public string[] tomb;
@@ -20,7 +18,7 @@ namespace MaradjTalpon
 
         public KerdesBeolvasas()
         {
-           Kerd= Beolvas();
+           Kerd = Beolvas();
         }
 
         public List<Kerdesek> Beolvas()
