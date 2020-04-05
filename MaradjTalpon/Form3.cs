@@ -53,6 +53,7 @@ namespace MaradjTalpon
             probaGomb();
 
             segito();
+            megNyerted();
         }
 
         public void PasszolasiLehetosegTextBox_TextChanged(object sender, EventArgs e)
@@ -429,6 +430,48 @@ namespace MaradjTalpon
                     int val = random.Next(0, KerdesBeolvasas.kategoriaTomb[13].Count);
                     Form4.hanysor = KerdesBeolvasas.kategoriaTomb[13][val];
                 }
+                else if (JatekRadioButton.Checked)
+                {
+                    item.Kategoria = "JÁTÉK";
+
+                    int val = random.Next(0, KerdesBeolvasas.kategoriaTomb[14].Count);
+                    Form4.hanysor = KerdesBeolvasas.kategoriaTomb[14][val];
+                }
+                else if (OrszagokRadioButton.Checked)
+                {
+                    item.Kategoria = "ORSZÁGOK";
+
+                    int val = random.Next(0, KerdesBeolvasas.kategoriaTomb[15].Count);
+                    Form4.hanysor = KerdesBeolvasas.kategoriaTomb[15][val];
+                }
+                else if (SzinhazRadioButton.Checked)
+                {
+                    item.Kategoria = "SZÍNHÁZ";
+
+                    int val = random.Next(0, KerdesBeolvasas.kategoriaTomb[16].Count);
+                    Form4.hanysor = KerdesBeolvasas.kategoriaTomb[16][val];
+                }
+                else if (OperaRadioButton.Checked)
+                {
+                    item.Kategoria = "OPERA";
+
+                    int val = random.Next(0, KerdesBeolvasas.kategoriaTomb[17].Count);
+                    Form4.hanysor = KerdesBeolvasas.kategoriaTomb[17][val];
+                }
+                else if (EpiteszetRadioButton.Checked)
+                {
+                    item.Kategoria = "ÉPÍTÉSZET";
+
+                    int val = random.Next(0, KerdesBeolvasas.kategoriaTomb[18].Count);
+                    Form4.hanysor = KerdesBeolvasas.kategoriaTomb[18][val];
+                }
+                else if (FoldrajzRadioButton.Checked)
+                {
+                    item.Kategoria = "FÖLDRAJZ";
+
+                    int val = random.Next(0, KerdesBeolvasas.kategoriaTomb[19].Count);
+                    Form4.hanysor = KerdesBeolvasas.kategoriaTomb[19][val];
+                }
             }
         }
 
@@ -488,7 +531,7 @@ namespace MaradjTalpon
                 this.Close();
                 Form3.max2 = 0;
                 Form4.hanysor = random.Next(0, 5000);
-                gombLista.Clear();                
+                szamindex.Clear();                
                 Form3 ujFrm = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
                 ujFrm.Button_Jatekos1.BackColor = Color.Red;
                 ujFrm.Button_Jatekos1.Enabled = true;

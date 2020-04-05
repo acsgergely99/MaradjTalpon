@@ -118,6 +118,30 @@ namespace MaradjTalpon
             {
                 kategoriaTomb[13].Add(listahossz - 1);
             }
+            else if (kategoria == "JÁTÉK")
+            {
+                kategoriaTomb[14].Add(listahossz - 1);
+            }
+            else if (kategoria == "ORSZÁGOK")
+            {
+                kategoriaTomb[15].Add(listahossz - 1);
+            }
+            else if (kategoria == "SZÍNHÁZ")
+            {
+                kategoriaTomb[16].Add(listahossz - 1);
+            }
+            else if (kategoria == "OPERA")
+            {
+                kategoriaTomb[17].Add(listahossz - 1);
+            }
+            else if (kategoria == "ÉPÍTÉSZET")
+            {
+                kategoriaTomb[18].Add(listahossz - 1);
+            }
+            else if (kategoria == "FÖLDRAJZ")
+            {
+                kategoriaTomb[19].Add(listahossz - 1);
+            }
         }
 
 
