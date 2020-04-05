@@ -92,8 +92,6 @@
     <Compile Include="Fo_jatekos.cs" />
     <Compile Include="KerdesBeolvasas.cs" />
     <Compile Include="Kerdesek.cs" />
-    <Compile Include="Nyeremeny.cs" />
-    <Compile Include="Passzolas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -117,6 +115,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

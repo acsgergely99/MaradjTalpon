@@ -11,6 +11,7 @@ namespace MaradjTalpon
     class KerdesBeolvasas
     {
         public static List<Kerdesek> kerd;
+        public static List<int>[] kategoriaTomb = new List<int>[20];
         public static Random rand;
         public string[] tomb;
 
@@ -19,10 +20,18 @@ namespace MaradjTalpon
         public KerdesBeolvasas()
         {
            Kerd = Beolvas();
+         
         }
 
         public List<Kerdesek> Beolvas()
         {
+
+            for (int i = 0; i < 20; i++)
+            {
+                kategoriaTomb[i] = new List<int>();
+            }
+
+
             List<Kerdesek> txt = new List<Kerdesek>();
             StreamReader sr = new StreamReader("kerdes.txt", Encoding.UTF8);
             Kerdesek k;
@@ -45,9 +54,73 @@ namespace MaradjTalpon
                 string[] valaszok = valaszlehetosegek.ToArray();
                 k = new Kerdesek(kerdesNehezseg, kerdes, valaszok, helyesValasz, kategoriAA);
                 txt.Add(k);
+                Pakolgat(kategoriAA, txt.Count);
+
             }
             return txt;
         }
+
+        private void Pakolgat(String kategoria, int listahossz)
+        {
+            if(kategoria == "BIOLÓGIA")
+            {
+                kategoriaTomb[0].Add(listahossz-1);
+            }
+            else if (kategoria == "NYELV")
+            {
+                kategoriaTomb[1].Add(listahossz - 1);
+            }
+            else if (kategoria == "SPORT")
+            {
+                kategoriaTomb[2].Add(listahossz - 1);
+            }
+            else if (kategoria == "FILM")
+            {
+                kategoriaTomb[3].Add(listahossz - 1);
+            }
+            else if (kategoria == "TECHNIKA")
+            {
+                kategoriaTomb[4].Add(listahossz - 1);
+            }
+            else if (kategoria == "ÁLTALÁNOS")
+            {
+                kategoriaTomb[5].Add(listahossz - 1);
+            }
+            else if (kategoria == "IRODALOM")
+            {
+                kategoriaTomb[6].Add(listahossz - 1);
+            }
+            else if (kategoria == "ZENE")
+            {
+                kategoriaTomb[7].Add(listahossz - 1);
+            }
+            else if (kategoria == "MAGYARORSZÁG")
+            {
+                kategoriaTomb[8].Add(listahossz - 1);
+            }
+            else if (kategoria == "KONYHA")
+            {
+                kategoriaTomb[9].Add(listahossz - 1);
+            }
+            else if (kategoria == "TUDOMÁNY")
+            {
+                kategoriaTomb[10].Add(listahossz - 1);
+            }
+            else if (kategoria == "KÉPZŐMŰVÉSZET")
+            {
+                kategoriaTomb[11].Add(listahossz - 1);
+            }
+            else if (kategoria == "TÖRTÉNELEM")
+            {
+                kategoriaTomb[12].Add(listahossz - 1);
+            }
+            else if (kategoria == "VALLÁS")
+            {
+                kategoriaTomb[13].Add(listahossz - 1);
+            }
+        }
+
+
         public string getKerdes(int sor)
         {
             string kerdes = "";

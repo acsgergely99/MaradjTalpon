@@ -13,14 +13,12 @@ namespace MaradjTalpon
         public string[] valaszok;
         public string kategoria;
         public string helyesValaszok;
-        public bool votma;
 
         public int Nehezseg { get => nehezsegiSzint; set => nehezsegiSzint = value; }
         public string Kerdes { get => kerdes; set => kerdes = value; }
         public string[] Valaszok { get => valaszok; set => valaszok = value; }
         public string Kategoria { get => kategoria; set => kategoria = value; }
         public string HelyesValaszok { get => helyesValaszok; set => helyesValaszok = value; }
-        public bool Votma { get => votma; set => votma = value; }
 
         public Kerdesek(int nehezsegiSzint, string kerdes, string[] valaszok, string helyesValaszok,string kategoria )
         {
@@ -33,7 +31,6 @@ namespace MaradjTalpon
           //  this.valaszok[3] = valaszok[3];
             this.kategoria = kategoria;
             this.helyesValaszok = helyesValaszok;
-            this.votma = false;
         }
 
         public override string ToString()

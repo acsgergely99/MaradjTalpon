@@ -650,19 +650,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Button_Jatekos1;
-        private System.Windows.Forms.Button Button_Jatekos6;
-        private System.Windows.Forms.Button Button_Jatekos7;
-        private System.Windows.Forms.Button Button_Jatekos2;
-        private System.Windows.Forms.Button Button_Jatekos3;
-        private System.Windows.Forms.Button Button_Jatekos9;
-        private System.Windows.Forms.Button Button_Jatekos10;
-        private System.Windows.Forms.Button Button_Jatekos4;
-        private System.Windows.Forms.Button Button_Jatekos5;
-        private System.Windows.Forms.Button Button_Jatekos8;
-        private System.Windows.Forms.TextBox PenznyeremenyTextBox;
-        private System.Windows.Forms.TextBox PasszolasiLehetosegTextBox;
         private System.Windows.Forms.TextBox FoJatekosTextBox;
         private System.Windows.Forms.TextBox JatekosLakhelyTextBox;
         private System.Windows.Forms.Label NevLabel;
@@ -692,5 +679,17 @@
         private System.Windows.Forms.RadioButton JatekRadioButton;
         private System.Windows.Forms.RadioButton OrszagokRadioButton;
         private System.Windows.Forms.RadioButton EpiteszetRadioButton;
+        public System.Windows.Forms.Button Button_Jatekos1;
+        public System.Windows.Forms.Button Button_Jatekos2;
+        public System.Windows.Forms.Button Button_Jatekos3;
+        public System.Windows.Forms.Button Button_Jatekos6;
+        public System.Windows.Forms.Button Button_Jatekos7;
+        public System.Windows.Forms.Button Button_Jatekos9;
+        public System.Windows.Forms.Button Button_Jatekos10;
+        public System.Windows.Forms.Button Button_Jatekos4;
+        public System.Windows.Forms.Button Button_Jatekos5;
+        public System.Windows.Forms.Button Button_Jatekos8;
+        public System.Windows.Forms.TextBox PenznyeremenyTextBox;
+        public System.Windows.Forms.TextBox PasszolasiLehetosegTextBox;
     }
 }

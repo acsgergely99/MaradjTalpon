@@ -23,12 +23,14 @@ namespace MaradjTalpon
         public int quick3 = 3000;
 
         public static int penzNyeremeny;
-        public Random random = new Random();
-        public Random random2 = new Random();
+        public static Random random = new Random();
+        public static Random random2 = new Random();
         public string betu = "";
         KerdesBeolvasas BEOLVAS = new KerdesBeolvasas();
-        private int hanysor;
+        public static int hanysor;
         public int adottValasz;
+        public static int hanysorLetilt;
+        
 
         public bool tippeltunk = false;
         public bool buul = false;
@@ -38,10 +40,11 @@ namespace MaradjTalpon
         {
 
             InitializeComponent();
-           
-            hanysor = random.Next(0, 5000);
+
+            //hanysor = random.Next(0, 5000);
             szoveg();
             ParbajPasszTextBox.Text = PasszolasiLehetoseg;
+            
         }
 
         private void Form4_Load(object sender, EventArgs e)
@@ -117,18 +120,24 @@ namespace MaradjTalpon
                 ValaszlehetosegGomb2.Text = BEOLVAS.Valasz2(hanysor);
                 ValaszlehetosegGomb3.Text = BEOLVAS.Valasz3(hanysor);
                 ValaszlehetosegGomb4.Text = BEOLVAS.Valasz4(hanysor);
+                /*if (hanysor > 0)
+                {
+                    
+                }
+                else
+                {
+                    hanysor = random.Next(0, 5000);
+                    KerdesekLabel.Text = BEOLVAS.getKerdes(hanysor);
+                    ValaszlehetosegGomb1.Text = BEOLVAS.Valasz1(hanysor);
+                    ValaszlehetosegGomb2.Text = BEOLVAS.Valasz2(hanysor);
+                    ValaszlehetosegGomb3.Text = BEOLVAS.Valasz3(hanysor);
+                    ValaszlehetosegGomb4.Text = BEOLVAS.Valasz4(hanysor);
+                }*/
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-        public void szoveg2()
-        {
-            ValaszlehetosegGomb1.BackColor = Color.White;
-            ValaszlehetosegGomb2.BackColor = Color.White;
-            ValaszlehetosegGomb3.BackColor = Color.White;
-            ValaszlehetosegGomb4.BackColor = Color.White;
         }
 
         public void joValasz()
@@ -158,10 +167,11 @@ namespace MaradjTalpon
                 Form3.eddigMegnyert.Add(Form3.penznyeremeny);               
                 if (result == DialogResult.OK)
                 {
-                    this.Hide();
-                    Program.foablak = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
-                    Program.foablak.Show();
+                    this.Close();
+                    Form3 ujj = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
+                    ujj.Show();
                 }
+                hanysor = random.Next(0, 5000);
             }
             else
             {
@@ -363,12 +373,34 @@ namespace MaradjTalpon
             DialogResult result = MessageBox.Show("Passzlehetőség nélkül lejárt az időd vagy rosszul válaszoltál a kérdésre, ezért vesztettél.", "Szeretnél új játékot kezdeni?", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                Form3.passzLehetosegek = "2";
+                Form3.eddigMegnyert.Clear();
                 Program.foablak.Close();
                 this.Close();
-                Form3.passzLehetosegek = "2";
-                Form3.penznyeremeny = 0;
-                Program.foablak = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
-                Program.foablak.Show();
+                Form3.max2 = 0;
+                //Form3.gombLista.Clear();
+                Form3 ujFrm = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
+                ujFrm.Button_Jatekos1.BackColor = Color.Red;
+                ujFrm.Button_Jatekos1.Enabled = true;
+                ujFrm.Button_Jatekos2.BackColor = Color.Red;
+                ujFrm.Button_Jatekos2.Enabled = true;
+                ujFrm.Button_Jatekos3.BackColor = Color.Red;
+                ujFrm.Button_Jatekos3.Enabled = true;
+                ujFrm.Button_Jatekos4.BackColor = Color.Red;
+                ujFrm.Button_Jatekos4.Enabled = true;
+                ujFrm.Button_Jatekos5.BackColor = Color.Red;
+                ujFrm.Button_Jatekos5.Enabled = true;
+                ujFrm.Button_Jatekos6.BackColor = Color.Red;
+                ujFrm.Button_Jatekos6.Enabled = true;
+                ujFrm.Button_Jatekos7.BackColor = Color.Red;
+                ujFrm.Button_Jatekos7.Enabled = true;
+                ujFrm.Button_Jatekos8.BackColor = Color.Red;
+                ujFrm.Button_Jatekos8.Enabled = true;
+                ujFrm.Button_Jatekos9.BackColor = Color.Red;
+                ujFrm.Button_Jatekos9.Enabled = true;
+                ujFrm.Button_Jatekos10.BackColor = Color.Red;
+                ujFrm.Button_Jatekos10.Enabled = true;
+                ujFrm.Show();
                 
             }
             else 
@@ -376,6 +408,74 @@ namespace MaradjTalpon
                 Program.belepoForm.Close();
                 Close();
             }
+        }
+       
+
+
+
+          
+            /*if (Form3.indexertek == true && Form3.ert == "1")
+            {
+               // ujj.Button_Jatekos1.BackColor = Color.Green;
+              //  ujj.Button_Jatekos1.Enabled = false;
+
+                Form3.szamindex.Add("1");
+            }
+            if (Form3.indexertek == true && Form3.ert == "2")
+            {
+              //  ujj.Button_Jatekos2.BackColor = Color.Green;
+              //  ujj.Button_Jatekos2.Enabled = false;
+                Form3.szamindex.Add("2");
+            }
+            if (Form3.indexertek == true && Form3.ert == "3")
+            {
+             //   ujj.Button_Jatekos3.BackColor = Color.Green;
+             //   ujj.Button_Jatekos3.Enabled = false;
+                Form3.szamindex.Add("3");
+            }
+            if (Form3.indexertek == true && Form3.ert == "4")
+            {
+                ujj.Button_Jatekos4.BackColor = Color.Green;
+                ujj.Button_Jatekos4.Enabled = false;
+                Form3.szamindex.Add("4");
+            }
+            if (Form3.indexertek == true && Form3.ert == "5")
+            {
+                ujj.Button_Jatekos5.BackColor = Color.Green;
+                ujj.Button_Jatekos5.Enabled = false;
+                Form3.szamindex.Add("5");
+            }
+            if (Form3.indexertek == true && Form3.ert == "6")
+            {
+                ujj.Button_Jatekos6.BackColor = Color.Green;
+                ujj.Button_Jatekos6.Enabled = false;
+                Form3.szamindex.Add("6");
+            }
+            if (Form3.indexertek == true && Form3.ert == "7")
+            {
+                ujj.Button_Jatekos7.BackColor = Color.Green;
+                ujj.Button_Jatekos7.Enabled = false;
+                Form3.szamindex.Add("7");
+            }
+            if (Form3.indexertek == true && Form3.ert == "8")
+            {
+                ujj.Button_Jatekos8.BackColor = Color.Green;
+                ujj.Button_Jatekos8.Enabled = false;
+                Form3.szamindex.Add("8");
+            }
+            if (Form3.indexertek == true && Form3.ert == "9")
+            {
+                ujj.Button_Jatekos9.BackColor = Color.Green;
+                ujj.Button_Jatekos9.Enabled = false;
+                Form3.szamindex.Add("9");
+            }
+            if (Form3.indexertek == true && Form3.ert == "10")
+            {
+                ujj.Button_Jatekos10.BackColor = Color.Green;
+                ujj.Button_Jatekos10.Enabled = false;
+                Form3.szamindex.Add("10");
+            }
+            */
         }
         //public void Osszegek()
         //{
@@ -391,9 +491,8 @@ namespace MaradjTalpon
         //    penzNyeremenyek.Add(500000);
         //    penzNyeremenyek.Add(1000000);
         //    penzNyeremenyek.Add(1000000);
-     
+
         //}
 
 
     }
-}
