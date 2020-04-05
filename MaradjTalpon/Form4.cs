@@ -378,6 +378,7 @@ namespace MaradjTalpon
                 Program.foablak.Close();
                 this.Close();
                 Form3.max2 = 0;
+                hanysor = random.Next(0, 5000);
                 //Form3.gombLista.Clear();
                 Form3 ujFrm = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
                 ujFrm.Button_Jatekos1.BackColor = Color.Red;
@@ -400,6 +401,7 @@ namespace MaradjTalpon
                 ujFrm.Button_Jatekos9.Enabled = true;
                 ujFrm.Button_Jatekos10.BackColor = Color.Red;
                 ujFrm.Button_Jatekos10.Enabled = true;
+                ujFrm.gombLista.Clear();
                 ujFrm.Show();
                 
             }

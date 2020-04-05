@@ -30,6 +30,7 @@ namespace MaradjTalpon
         public static string ert = "";
         public static bool indexertek = false;
         public static int max2 = 0;
+        public static int nyertMeccsek;
 
         public static int ertekatad;
         public static List<string> szamindex = new List<string>();
@@ -445,16 +446,11 @@ namespace MaradjTalpon
             gombLista.Add(Button_Jatekos10);
         }
 
-        public string Get_Form1Text()
-        {
-            return PenznyeremenyTextBox.Text = ertekatad + "";
-        }
         public void segito()
         {
             for (int i = 1; i < 11; i++)
             {
                 Beallit(gombLista[i - 1], i + "");
-
             }
         }
 
@@ -478,6 +474,49 @@ namespace MaradjTalpon
             if (max2 == 2)
             {
                 KategoriaGroupBox.Enabled = false;
+            }
+        }
+       
+        private void megNyerted()
+        {
+            DialogResult result = MessageBox.Show("GRATULÁLOK MEGNYERTED AZ EGÉSZ JÁTÉKOT, 25 MILLIÓ FORINTAL LETTÉL GAZDAGABB", "Szeretnél új játékot kezdeni?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Form3.passzLehetosegek = "2";
+                Form3.eddigMegnyert.Clear();
+                Program.foablak.Close();
+                this.Close();
+                Form3.max2 = 0;
+                Form4.hanysor = random.Next(0, 5000);
+                gombLista.Clear();                
+                Form3 ujFrm = new Form3(Program.fo_jatekos_nev, Program.fo_jatekos_lakhely);
+                ujFrm.Button_Jatekos1.BackColor = Color.Red;
+                ujFrm.Button_Jatekos1.Enabled = true;
+                ujFrm.Button_Jatekos2.BackColor = Color.Red;
+                ujFrm.Button_Jatekos2.Enabled = true;
+                ujFrm.Button_Jatekos3.BackColor = Color.Red;
+                ujFrm.Button_Jatekos3.Enabled = true;
+                ujFrm.Button_Jatekos4.BackColor = Color.Red;
+                ujFrm.Button_Jatekos4.Enabled = true;
+                ujFrm.Button_Jatekos5.BackColor = Color.Red;
+                ujFrm.Button_Jatekos5.Enabled = true;
+                ujFrm.Button_Jatekos6.BackColor = Color.Red;
+                ujFrm.Button_Jatekos6.Enabled = true;
+                ujFrm.Button_Jatekos7.BackColor = Color.Red;
+                ujFrm.Button_Jatekos7.Enabled = true;
+                ujFrm.Button_Jatekos8.BackColor = Color.Red;
+                ujFrm.Button_Jatekos8.Enabled = true;
+                ujFrm.Button_Jatekos9.BackColor = Color.Red;
+                ujFrm.Button_Jatekos9.Enabled = true;
+                ujFrm.Button_Jatekos10.BackColor = Color.Red;
+                ujFrm.Button_Jatekos10.Enabled = true;
+                ujFrm.Show();
+
+            }
+            else
+            {
+                Program.belepoForm.Close();
+                Close();
             }
         }
     }
